@@ -1,0 +1,235 @@
+---
+const projects = [
+  {
+    name: "FlontEnd Library",
+    description:
+      "Notion のデータベースを学習資料の管理ツールとして活用するビジュアライザー。タグによるフィルタリングとタイトル検索で資料を素早く見つけられる。",
+    techs: ["Next.js 16", "TypeScript", "Notion API", "CSS Modules"],
+    url: "https://flont-end-library.vercel.app/dashboard",
+    github: "https://github.com/Syo-M/NotionFlontEndLibrary",
+  },
+  {
+    name: "Notion Blog",
+    description:
+      "Notion をコンテンツ管理システムとして使うブログ。Notion に記事を書くだけで自動的にサイトへ反映される。カテゴリー分類・日付管理に対応。",
+    techs: ["Astro", "TypeScript", "Notion API", "notion-to-md"],
+    url: "https://notion-blog-khaki-sigma.vercel.app/",
+    github: "https://github.com/Syo-M/NotionBlog",
+  },
+  {
+    name: "Clerk Auth Demo",
+    description:
+      "Clerk v7 を使ったカスタム認証UIの実装デモ。メール・パスワードログインに加え Google SSO にも対応。デザインシステムに沿ったオリジナルUIで構築。",
+    techs: ["Next.js 16", "TypeScript", "Clerk v7", "CSS Modules"],
+    url: "https://cleak-auth-demo.vercel.app/",
+    github: null,
+  },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Portfolio</title>
+    <style>
+      @import "../styles/global.css";
+    </style>
+  </head>
+  <body>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero-label">Portfolio</p>
+        <h1 class="hero-title">制作アプリ一覧</h1>
+        <p class="hero-sub">Claude Code を活用して制作した Web アプリケーションをまとめています。</p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <main class="container projects-section">
+      <div class="grid">
+        {projects.map((project) => (
+          <article class="card">
+            <div class="card-body">
+              <h2 class="card-name">{project.name}</h2>
+              <p class="card-desc">{project.description}</p>
+              <div class="card-techs">
+                {project.techs.map((tech) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+            <div class="card-footer">
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                  GitHub
+                </a>
+              )}
+              <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                アプリを開く →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Built with Claude Code</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<style>
+  /* ── Layout ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--color-surface-raised);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-20) var(--space-6);
+    text-align: center;
+  }
+  .hero-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .hero-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+  }
+  .hero-sub {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-sub);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── Projects ── */
+  .projects-section {
+    padding: var(--space-16) var(--space-6);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  /* ── Card ── */
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+  .card-body {
+    flex: 1;
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .card-name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+  .card-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-sub);
+    line-height: 1.8;
+    flex: 1;
+  }
+  .card-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .tech-tag {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    padding: 3px var(--space-3);
+    border-radius: var(--radius-full);
+    background: var(--color-muted);
+    color: var(--color-text-sub);
+    border: 1px solid var(--color-border);
+  }
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+  .btn-primary:hover { background: var(--color-accent-hover); }
+  .btn-ghost {
+    color: var(--color-text-sub);
+    border: 1px solid var(--color-border);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: var(--space-8) var(--space-6);
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero-title { font-size: var(--font-size-3xl); }
+    .hero-sub { font-size: var(--font-size-md); }
+    .grid { grid-template-columns: 1fr; }
+    .projects-section { padding: var(--space-10) var(--space-4); }
+  }
+</style>

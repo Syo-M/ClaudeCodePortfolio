@@ -14,6 +14,7 @@
 | clerk-auth-demo | https://cleak-auth-demo.vercel.app/ | Clerk v7 認証デモ |
 | FlontEnd Library | https://flont-end-library.vercel.app/dashboard | Notion 学習DBビジュアライザー |
 | Notion Blog | https://notion-blog-khaki-sigma.vercel.app/ | Notion ブログ |
+| Engineer Dashboard | https://eo-dashboard-iota.vercel.app/ | エンジニア向け作業ダッシュボード |
 
 ## 非掲載アプリ（ポートフォリオ対象外）
 
@@ -21,6 +22,10 @@
 |---|---|
 | MkDataList | ポートフォリオ掲載対象外（個人利用）|
 | ZITPromptMaker | ポートフォリオ掲載対象外（個人利用）|
+
+## デプロイ先
+
+https://claude-code-portfolio-six.vercel.app/
 
 ## 開発コマンド
 

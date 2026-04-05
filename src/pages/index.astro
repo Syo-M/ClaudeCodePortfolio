@@ -1,4 +1,14 @@
 ---
+const library = {
+  name: "Shared Component Library",
+  description:
+    "全プロジェクト共通で使用する React コンポーネントライブラリ。アトミックデザイン（Atoms / Molecules / Organisms）で構成し、Storybook でカタログ管理。Mocha Mousse をベーストークンとしたデザインシステムを実装。",
+  components: ["Button", "Input", "Modal", "Toast", "Badge", "Chip", "Select", "Checkbox", "Avatar", "Spinner", "FormField", "WeatherDisplay", "UserMenu", "PageHeader", "AuthCard"],
+  techs: ["React", "TypeScript", "Storybook", "CSS Modules"],
+  storybook: "https://claude-code-components.vercel.app/",
+  github: "https://github.com/Syo-M/claudeCodeComponents",
+};
+
 const projects = [
   {
     name: "FlontEnd Library",
@@ -60,6 +70,10 @@ const projects = [
 
     <!-- Projects -->
     <main class="container projects-section">
+      <div class="projects-header">
+        <span class="section-label" style="color: var(--color-accent)">Applications</span>
+        <h2 class="section-title">制作アプリ</h2>
+      </div>
       <div class="grid">
         {projects.map((project) => (
           <article class="card">
@@ -86,6 +100,44 @@ const projects = [
         ))}
       </div>
     </main>
+
+    <!-- Component Library -->
+    <section class="container library-section">
+      <div class="section-header">
+        <span class="section-label">Component Library</span>
+        <h2 class="section-title">コンポーネントライブラリ</h2>
+        <p class="section-sub">各アプリで共通利用する UI コンポーネントを Storybook で管理しています。</p>
+      </div>
+
+      <div class="library-card">
+        <div class="library-body">
+          <div class="library-top">
+            <span class="storybook-badge">● Storybook</span>
+            <h3 class="library-name">{library.name}</h3>
+          </div>
+          <p class="library-desc">{library.description}</p>
+          <div class="library-components">
+            {library.components.map((c) => (
+              <span class="component-tag">{c}</span>
+            ))}
+            <span class="component-tag component-tag--more">+ more</span>
+          </div>
+          <div class="card-techs">
+            {library.techs.map((tech) => (
+              <span class="tech-tag">{tech}</span>
+            ))}
+          </div>
+        </div>
+        <div class="library-footer">
+          <a href={library.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            GitHub
+          </a>
+          <a href={library.storybook} target="_blank" rel="noopener noreferrer" class="btn btn-storybook">
+            Storybook を開く →
+          </a>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="container">
@@ -135,7 +187,11 @@ const projects = [
 
   /* ── Projects ── */
   .projects-section {
-    padding: var(--space-16) var(--space-6);
+    padding: var(--space-16) var(--space-6) var(--space-10);
+  }
+  .projects-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
   }
   .grid {
     display: grid;
@@ -222,6 +278,128 @@ const projects = [
   .btn-ghost:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
+  }
+
+  /* ── Component Library Section ── */
+  .library-section {
+    padding: 0 var(--space-6) var(--space-16);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+  .section-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: #FF4785;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin: var(--space-2) 0 var(--space-3);
+  }
+  .section-sub {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-sub);
+  }
+
+  .library-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface-raised);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .library-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .library-body {
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .library-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .storybook-badge {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: #FF4785;
+    background: #FF478511;
+    border: 1px solid #FF478533;
+    border-radius: var(--radius-full);
+    padding: 3px var(--space-3);
+    white-space: nowrap;
+  }
+
+  .library-name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+
+  .library-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-sub);
+    line-height: 1.8;
+    max-width: 680px;
+  }
+
+  .library-components {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .component-tag {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    padding: 3px var(--space-3);
+    border-radius: var(--radius-full);
+    background: #FF478509;
+    color: #c4305e;
+    border: 1px solid #FF478533;
+  }
+  .component-tag--more {
+    background: var(--color-muted);
+    color: var(--color-text-sub);
+    border-color: var(--color-border);
+  }
+
+  .library-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .btn-storybook {
+    background: #FF4785;
+    color: #fff;
+  }
+  .btn-storybook:hover {
+    background: #e03570;
+  }
+
+  @media (max-width: 640px) {
+    .library-section { padding: 0 var(--space-4) var(--space-10); }
+    .library-body { padding: var(--space-5); }
+    .library-footer { padding: var(--space-4) var(--space-5); }
   }
 
   /* ── Footer ── */

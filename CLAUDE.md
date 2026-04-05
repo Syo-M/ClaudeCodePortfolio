@@ -38,3 +38,4 @@ npm run build
 
 - noindex 設定済み（robots.txt + meta robots）
 - アプリを追加する場合は `src/pages/index.astro` の `projects` 配列を編集
+- コンポーネントライブラリの情報は `library` オブジェクトを編集（components配列でコンポーネント名を管理）

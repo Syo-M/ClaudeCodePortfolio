@@ -15,6 +15,7 @@
 | FlontEnd Library | https://flont-end-library.vercel.app/dashboard | Notion 学習DBビジュアライザー |
 | Notion Blog | https://notion-blog-khaki-sigma.vercel.app/ | Notion ブログ |
 | Engineer Dashboard | https://eo-dashboard-iota.vercel.app/ | エンジニア向け作業ダッシュボード |
+| Ensō Visualizer | （未デプロイ） | 水墨画風音楽ビジュアライザー |
 
 ## 非掲載アプリ（ポートフォリオ対象外）
 
